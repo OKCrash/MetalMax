@@ -18,9 +18,9 @@ func request_move(cellObject, moveDirection):
 # Collision detect before moving
 func is_target_valid(moveDirection):
 	if moveDirection:
-		var is_collided = player.move_and_collide(moveDirection * 32, true, true, true)
+		var is_collided = player.move_and_collide(moveDirection * player.velocity, true, true, true)
 		if is_collided:
 			print('Oops, a wall, we need to find another way.')
 			return 0
 		else:
-			return 32
+			return 1

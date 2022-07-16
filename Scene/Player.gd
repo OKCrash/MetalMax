@@ -2,13 +2,17 @@ extends KinematicBody2D
 
 
 onready var parent = get_parent()
+onready var rayCast = $RayCast2D
+
 var direction = Vector2.RIGHT setget update_current_direction, get_current_direction
 var velocity = 32 setget update_velocity, get_velocity
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("IdleRight")
-
+	rayCast.enabled = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,7 +42,7 @@ func get_input_direction():
 # Move to target tile
 func move_to(target):
 	var target_position = target['position']
-	var velocity = target['velocity']
+	var velocity = target['velocity'] * self.velocity
 	play_movement_animation(direction)
 	var move_direction = (position - target_position).normalized()
 	$Tween.interpolate_property($'Sprite', 'position', move_direction * velocity, Vector2(), $AnimationPlayer.current_animation_length,
@@ -47,7 +51,6 @@ func move_to(target):
 		$Sprite.position = position - target_position
 		position = target_position
 	yield($AnimationPlayer, 'animation_finished')
-
 
 func play_movement_animation(direction):
 	if direction:
@@ -90,3 +93,14 @@ func update_velocity(newVelocity):
 	
 func get_velocity():
 	return velocity
+	
+
+func _physics_process(delta):
+	rayCast.cast_to = direction * velocity
+	if Input.is_action_just_released("ui_select"):
+		if rayCast.is_colliding():
+			var obj = rayCast.get_collider()
+			print(obj.get("type"))
+		else:
+			print('Nothing!')
+#		
