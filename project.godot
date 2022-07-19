@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "RigidBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scene/Battle_Player.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"GitAPI": "",
+"Player": ""
 }
 
 [application]
@@ -26,10 +32,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=320
-window/size/height=240
-window/size/test_width=1280
+window/size/width=640
+window/size/height=320
+window/size/test_width=1440
 window/size/test_height=960
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [gdnative]
 
@@ -69,15 +77,17 @@ ui_attack={
 
 [layer_names]
 
-2d_render/layer_1="background"
-2d_render/layer_2="land"
-2d_render/layer_3="sky"
-2d_physics/layer_1="worldland"
-2d_physics/layer_2="sky"
+2d_render/layer_1="land"
+2d_render/layer_2="sky"
+2d_render/layer_3="background"
+2d_physics/layer_1="world"
+2d_physics/layer_2="battle"
+2d_physics/layer_3="damage"
 
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/default_gravity=980
 
 [rendering]
 
