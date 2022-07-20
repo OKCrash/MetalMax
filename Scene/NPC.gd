@@ -3,6 +3,7 @@ extends KinematicBody2D
 enum objType {
 	NPC,
 	BOSS,
+	ENEMY,
 }
 
 var animation_frame = 0
@@ -21,3 +22,7 @@ func _process(delta):
 	
 func _on_World_refresh_npc_animation():
 	$Sprite.frame = abs($Sprite.frame - 1)
+
+
+func _on_Hurtbox_area_entered(area):
+	print("-10 HP!!!")

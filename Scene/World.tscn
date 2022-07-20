@@ -67,11 +67,13 @@ position = Vector2( 352, 64 )
 texture = ExtResource( 6 )
 
 [node name="BOSS" parent="." instance=ExtResource( 3 )]
-position = Vector2( 448, 192 )
+position = Vector2( 464, 208 )
 type = 1
 
 [connection signal="refresh_npc_animation" from="." to="NPC" method="_on_World_refresh_npc_animation"]
 [connection signal="refresh_npc_animation" from="." to="BOSS" method="_on_World_refresh_npc_animation"]
 
 [editable path="NPC"]
+[editable path="NPC/Hurtbox"]
 [editable path="BOSS"]
+[editable path="BOSS/Hurtbox"]

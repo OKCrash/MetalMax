@@ -50,7 +50,7 @@ var shoot_time = 1e20
 onready var sprite = $Sprite
 #onready var sprite_smoke = sprite.get_node(@"Smoke")
 onready var animation_player = $AnimationPlayer
-onready var damageBox = $DamageBox
+onready var hitPivot = $PlayerHitPivot
 #onready var bullet_shoot = $BulletShoot
 
 func _integrate_forces(s):
@@ -80,12 +80,15 @@ func _integrate_forces(s):
 	var floor_index = -1
 
 	for x in range(s.get_contact_count()):
+		# Floor collider
 		var ci = s.get_contact_local_normal(x)
+		# Enemy collider
+		var co = s.get_contact_collider_object(x)
 
 		if ci.dot(Vector2(0, -1)) > 0.6:
 			found_floor = true
 			floor_index = x
-
+			
 	# A good idea when implementing characters of all kinds,
 	# compensates for physics imprecision, as well as human reaction delay.
 	# Attack
@@ -184,8 +187,8 @@ func _integrate_forces(s):
 			sprite.scale.x = -1
 		else:
 			sprite.scale.x = 1
-		damageBox.position.x *= -1
-		damageBox.scale.x *= -1
+		hitPivot.position.x *= -1
+		hitPivot.scale.x *= -1
 		siding_left = new_siding_left
 	
 	# Left attack & right attack
@@ -209,6 +212,9 @@ func _integrate_forces(s):
 	# Finally, apply gravity and set back the linear velocity.
 	lv += s.get_total_gravity() * step
 	s.set_linear_velocity(lv)
+	
+	# Collision process
+	
 	
 
 
@@ -240,5 +246,7 @@ func _integrate_forces(s):
 
 func _attack():
 	animation_player.play("Attack")
+	
+
 		
 	
