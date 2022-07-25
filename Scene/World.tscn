@@ -12,7 +12,7 @@
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 1472, 1344, 288, 128 )
+0/region = Rect2( 544, 1008, 176, 144 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
@@ -27,29 +27,19 @@
 script = ExtResource( 4 )
 
 [node name="WorldGrid" type="TileMap" parent="."]
+mode = 2
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
-show_collision = true
-format = 1
-tile_data = PoolIntArray( 0, 1, 0 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Wataro" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-show_collision = true
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 0, 0, 0 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 320, 128 )
+position = Vector2( 352, 104 )
+collision_layer = 0
+collision_mask = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -57,7 +47,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( 64, 0 )
+position = Vector2( 64, 16 )
 polygon = PoolVector2Array( 384, 0, 384, 32, 448, 32, 448, 64, 416, 64, 416, 128, 384, 128, 384, 192, 416, 192, 416, 224, 448, 224, 448, 256, 480, 256, 480, 0 )
 
 [node name="NPC" parent="." instance=ExtResource( 3 )]
@@ -67,11 +57,19 @@ position = Vector2( 352, 64 )
 texture = ExtResource( 6 )
 
 [node name="BOSS" parent="." instance=ExtResource( 3 )]
-position = Vector2( 464, 208 )
+position = Vector2( 464, 224 )
 type = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1440
+limit_bottom = 960
 
 [connection signal="refresh_npc_animation" from="." to="NPC" method="_on_World_refresh_npc_animation"]
 [connection signal="refresh_npc_animation" from="." to="BOSS" method="_on_World_refresh_npc_animation"]
+[connection signal="tree_exiting" from="." to="." method="_on_World_tree_exiting"]
+[connection signal="encounter_battle" from="Player" to="." method="_on_Player_encounter_battle"]
 
 [editable path="NPC"]
 [editable path="NPC/Hurtbox"]

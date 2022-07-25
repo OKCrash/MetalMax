@@ -55,7 +55,6 @@ onready var hitPivot = $PlayerHitPivot
 
 func _integrate_forces(s):
 	var lv = s.get_linear_velocity()
-	
 	var step = s.get_step()
 
 	var new_anim = anim
@@ -82,8 +81,6 @@ func _integrate_forces(s):
 	for x in range(s.get_contact_count()):
 		# Floor collider
 		var ci = s.get_contact_local_normal(x)
-		# Enemy collider
-		var co = s.get_contact_collider_object(x)
 
 		if ci.dot(Vector2(0, -1)) > 0.6:
 			found_floor = true

@@ -14,30 +14,53 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Overlap/Hitbox.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://Overlap/Hurtbox.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scene/Battle_Player.gd"
+}, {
+"base": "Node",
+"class": "Status",
+"language": "GDScript",
+"path": "res://Spawns/Status.gd"
 } ]
 _global_script_class_icons={
 "GitAPI": "",
-"Player": ""
+"Hitbox": "",
+"Hurtbox": "",
+"Player": "",
+"Status": ""
 }
 
 [application]
 
-config/name="MetalMax"
+config/name="Wataro"
+config/description="FC Game rebuild."
 run/main_scene="res://Scene/World.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=640
-window/size/height=320
+window/size/width=1440
+window/size/height=960
 window/size/test_width=1440
 window/size/test_height=960
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [gdnative]
 
@@ -117,8 +140,11 @@ ui_attack={
 
 common/enable_pause_aware_picking=true
 2d/default_gravity=980
-2d/default_angular_damp=10.0
 
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

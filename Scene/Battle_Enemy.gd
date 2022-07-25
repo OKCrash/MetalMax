@@ -1,15 +1,15 @@
 extends RigidBody2D
 
+export(Vector2) var knockback = Vector2.RIGHT
 
-signal spawn_be_hit
+func _physics_process(delta):
+#	Keep roation zero
+	rotation = 0
+	
+func _on_Hurtbox_area_entered(area):
+	linear_velocity = knockback
+	
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Hurtbox.connect("be_hit", self, "_be_hit")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-func _be_hit(area):
-	emit_signal("spawn_be_hit", area, get_instance_id())
+func _on_EnemyStatus_status_death():
+	print("Oops, I'm dead!")
+	queue_free()

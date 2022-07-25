@@ -7,6 +7,8 @@ onready var rayCast = $RayCast2D
 var direction = Vector2.RIGHT setget update_current_direction, get_current_direction
 var velocity = 32 setget update_velocity, get_velocity
 
+signal encounter_battle
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,6 +103,7 @@ func _physics_process(delta):
 		if rayCast.is_colliding():
 			var obj = rayCast.get_collider()
 			print(obj.get("type"))
+			emit_signal("encounter_battle")
 		else:
 			print('Nothing!')
 #		
