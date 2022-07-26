@@ -25,7 +25,7 @@ func _init_global_timer():
 # Singal Process Area
 func _refresh_npc_animation():
 	emit_signal("refresh_npc_animation")
-	change_scene()
+#	change_scene()
 	
 
 #func _on_Player_encounter_battle():

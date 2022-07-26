@@ -225,6 +225,7 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.0862745, 0.117647, 0.847059, 1 )
+position = Vector2( 16, 16 )
 shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
@@ -232,6 +233,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 hframes = 3
 vframes = 4
 frame = 8
@@ -261,3 +263,4 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 16, 16 )
