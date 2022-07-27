@@ -7,7 +7,9 @@ enum objType {
 }
 
 var animation_frame = 0
+
 export(objType) var type
+export(bool) var encounter_battle
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,4 +22,4 @@ func _on_World_refresh_npc_animation():
 
 
 func _on_Hurtbox_area_entered(area):
-	print("-10 HP!!!")
+	pass

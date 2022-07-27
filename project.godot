@@ -51,10 +51,10 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1440
-window/size/height=960
-window/size/test_width=1440
-window/size/test_height=960
+window/size/width=1280
+window/size/height=720
+window/size/test_width=1280
+window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -65,6 +65,10 @@ enabled=PoolStringArray( "res://addons/vnen.tiled_importer/plugin.cfg" )
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+
+[global]
+
+window=false
 
 [importer_defaults]
 

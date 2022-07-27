@@ -192,7 +192,7 @@ tile_data = PoolIntArray( 0, 0, 0 )
 script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, 128 )
+position = Vector2( 576, 160 )
 collision_layer = 0
 collision_mask = 3
 
@@ -205,12 +205,7 @@ texture = ExtResource( 6 )
 [node name="BOSS" parent="." instance=ExtResource( 3 )]
 position = Vector2( 304, 80 )
 type = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 1440
-limit_bottom = 960
+encounter_battle = true
 
 [connection signal="refresh_npc_animation" from="." to="NPC" method="_on_World_refresh_npc_animation"]
 [connection signal="refresh_npc_animation" from="." to="BOSS" method="_on_World_refresh_npc_animation"]

@@ -11,12 +11,10 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 
-
 func _ready():
 	pass
 	
-	
-func _spawn():
+func _spawn_enemy():
 	pass
 
 

@@ -263,4 +263,17 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+modulate = Color( 0.0470588, 0.00784314, 0.129412, 1 )
 position = Vector2( 16, 16 )
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true

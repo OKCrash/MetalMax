@@ -102,8 +102,10 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_select"):
 		if rayCast.is_colliding():
 			var obj = rayCast.get_collider()
-			print(obj.get("type"))
-			emit_signal("encounter_battle")
+			print('Found : ' + str(obj.get("encounter_battle")))
+			if obj.get('encounter_battle'):
+				print('Ready to fight!')
+				emit_signal("encounter_battle")
 		else:
 			print('Nothing!')
 #		
