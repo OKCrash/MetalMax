@@ -9,7 +9,6 @@ var velocity = 32 setget update_velocity, get_velocity
 
 signal encounter_battle
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("IdleRight")
@@ -25,7 +24,8 @@ func _process(delta):
 	direction = input_direction
 	set_process_input(false)
 	set_process(false)
-	var target= parent.get_node("WorldGrid").request_move(self, input_direction)
+	parent.print_tree_pretty()
+	var target= parent.get_node("/root/World/Level/Map").request_move(self, input_direction)
 	$Tween.start()
 	yield(move_to(target), "completed")
 	set_process(true)

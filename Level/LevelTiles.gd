@@ -3,7 +3,7 @@ extends TileMap
 
 enum tileType {NPC, OBSTACLE, BOX}
 onready var parent = get_parent()
-onready var player = parent.get_node("Player")
+onready var player = Player
 
 
 func request_move(cellObject, moveDirection):

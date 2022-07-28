@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Overlap/Hurtbox.gd"
 }, {
-"base": "RigidBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Scene/Battle_Player.gd"
-}, {
 "base": "Node",
 "class": "Status",
 "language": "GDScript",
@@ -38,7 +33,6 @@ _global_script_class_icons={
 "GitAPI": "",
 "Hitbox": "",
 "Hurtbox": "",
-"Player": "",
 "Status": ""
 }
 
@@ -48,6 +42,13 @@ config/name="Wataro"
 config/description="FC Game rebuild."
 run/main_scene="res://Scene/World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Player="*res://Characters/Player.tscn"
+BattlePlayer="*res://Characters/Battle_Player.tscn"
+SceneSwitcher="*res://Global/SceneSwitcher.tscn"
+Signal="*res://Global/Signal.tscn"
 
 [display]
 
