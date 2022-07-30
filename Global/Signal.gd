@@ -1,3 +1,3 @@
 extends Node2D
 
-signal switch_scene(next_scene)
+signal switch_battle_scene(enmeys)

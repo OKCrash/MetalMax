@@ -22,10 +22,11 @@ func _process(delta):
 		play_idle_animation(direction)
 		return
 	direction = input_direction
+	if not is_target_valid():
+		return
 	set_process_input(false)
 	set_process(false)
-	parent.print_tree_pretty()
-	var target= parent.get_node("/root/World/Level/Map").request_move(self, input_direction)
+	var target = position + velocity * direction
 	$Tween.start()
 	yield(move_to(target), "completed")
 	set_process(true)
@@ -43,15 +44,11 @@ func get_input_direction():
 		
 # Move to target tile
 func move_to(target):
-	var target_position = target['position']
-	var velocity = target['velocity'] * self.velocity
+#	var velocity = direction * velocity
 	play_movement_animation(direction)
-	var move_direction = (position - target_position).normalized()
-	$Tween.interpolate_property($'Sprite', 'position', move_direction * velocity, Vector2(), $AnimationPlayer.current_animation_length,
-			Tween.TRANS_LINEAR, Tween.EASE_IN)
 	if velocity:
-		$Sprite.position = position - target_position
-		position = target_position
+		$Tween.interpolate_property(self, 'position', position, target, $AnimationPlayer.current_animation_length,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	yield($AnimationPlayer, 'animation_finished')
 
 func play_movement_animation(direction):
@@ -107,5 +104,15 @@ func _physics_process(delta):
 				print('Ready to fight!')
 				emit_signal("encounter_battle")
 		else:
-			print('Nothing!')
+			print('Nothing else!')
+			
+
+# Collision detect before moving
+func is_target_valid():
+	if direction:
+		var is_collided = move_and_collide(direction * velocity, true, true, true)
+		if is_collided:
+			return false
+		else:
+			return true
 #		

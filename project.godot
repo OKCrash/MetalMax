@@ -45,8 +45,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Player="*res://Characters/Player.tscn"
-BattlePlayer="*res://Characters/Battle_Player.tscn"
 SceneSwitcher="*res://Global/SceneSwitcher.tscn"
 Signal="*res://Global/Signal.tscn"
 
