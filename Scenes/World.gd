@@ -22,7 +22,7 @@ func _refresh_npc_animation():
 
 
 func _on_World_tree_exiting():
-	print("Main scene out!")
+	print("Main scene free!")
 
 
 func _on_Player_encounter_battle():
@@ -31,10 +31,10 @@ func _on_Player_encounter_battle():
 	var enemy = preload("res://Characters/Battle_Enemy.tscn").instance()
 	for i in range(3):
 		enemy_list.append(enemy.duplicate())
-	print(enemy_list)
+	set_process(false)
 	Signal.emit_signal("switch_battle_scene", enemy_list)
+#	scene_tree.current_scene.queue_free()
 	
-	scene_tree.current_scene.queue_free()
 	
 	
 

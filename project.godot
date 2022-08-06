@@ -40,13 +40,14 @@ _global_script_class_icons={
 
 config/name="Wataro"
 config/description="FC Game rebuild."
-run/main_scene="res://Scene/World.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 SceneSwitcher="*res://Global/SceneSwitcher.tscn"
 Signal="*res://Global/Signal.tscn"
+Battle="*res://Scenes/Battle.tscn"
 
 [display]
 
@@ -68,6 +69,7 @@ singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 [global]
 
 window=false
+scene=false
 
 [importer_defaults]
 
