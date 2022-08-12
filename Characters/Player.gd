@@ -7,8 +7,6 @@ onready var rayCast = $RayCast2D
 var direction = Vector2.RIGHT setget update_current_direction, get_current_direction
 var velocity = 32 setget update_velocity, get_velocity
 
-signal encounter_battle
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("IdleRight")
@@ -102,7 +100,7 @@ func _physics_process(delta):
 			print('Found : ' + str(obj.get("encounter_battle")))
 			if obj.get('encounter_battle'):
 				print('Ready to fight!')
-				emit_signal("encounter_battle")
+				Signal.emit_signal("encounter_battle")
 		else:
 			print('Nothing else!')
 			

@@ -4,3 +4,5 @@ extends Node2D
 signal switch_battle_scene(enmeys)
 
 signal battle_finished
+
+signal encounter_battle

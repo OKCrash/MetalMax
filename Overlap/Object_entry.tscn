@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Overlap/Object_entry.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.0
 
 [node name="Area2D" type="Area2D"]
 collision_mask = 0

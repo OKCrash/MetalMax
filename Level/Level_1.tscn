@@ -14,7 +14,7 @@ cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 show_collision = true
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 0, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 655360, 1, 0, 1310720, 2, 0, 1966080, 3, 0 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
